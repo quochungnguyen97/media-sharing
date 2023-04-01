@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Insta_2</string>
+    <string name="edit_account">Edit account</string>
+    <string name="logout">Logout</string>
+</resources>

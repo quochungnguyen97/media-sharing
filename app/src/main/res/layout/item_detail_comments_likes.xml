@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="liked"
+            type="Boolean" />
+        <variable
+            name="commentsCount"
+            type="Integer" />
+        <variable
+            name="likesCount"
+            type="Integer" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="3dp">
+        <ImageView
+            android:id="@+id/like_button"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="7dp"
+            android:src="@{liked ? @drawable/ic_like : @drawable/ic_not_like}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <TextView
+            android:id="@+id/likes_comments_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text='@{likesCount + " likes, " + commentsCount + " comments", default = "0 likes, 0 comments"}'
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/like_button"
+            app:layout_constraintTop_toTopOf="@id/like_button"
+            app:layout_constraintBottom_toBottomOf="@id/like_button" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

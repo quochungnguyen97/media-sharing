@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="com.rooze.insta_2.presentation.login.LoginViewState" />
+        <import type="android.view.View" />
+        <variable
+            name="viewModel"
+            type="com.rooze.insta_2.presentation.login.LoginViewModel" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:gravity="end"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/back_button"
+                    android:src="@drawable/ic_baseline_arrow_back_ios_new_24"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_marginStart="10dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:text='@{viewModel.viewState == LoginViewState.LOGIN ? "Register" : "Login", default = register}'
+                    android:onClick="@{() -> viewModel.changeState()}"
+                    android:textColor="@color/teal_200"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:layout_marginTop="20dp"
+                android:text='@{viewModel.viewState == LoginViewState.LOGIN ? "Login" : "Register", default=Login}' />
+
+            <EditText
+                android:id="@+id/email_edit_text"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@={viewModel.email}"
+                android:hint="Email" />
+
+            <EditText
+                android:id="@+id/password_edit_text"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:inputType="textPassword"
+                android:text="@={viewModel.password}"
+                android:hint="Password" />
+
+            <EditText
+                android:id="@+id/password2_edit_text"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:inputType="textPassword"
+                android:text="@={viewModel.password2}"
+                android:visibility="@{viewModel.viewState == LoginViewState.REGISTER ? View.VISIBLE : View.GONE, default = gone}"
+                android:hint="Password2" />
+
+
+            <EditText
+                android:id="@+id/display_name_editext"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@={viewModel.displayName}"
+                android:visibility="@{viewModel.viewState == LoginViewState.REGISTER ? View.VISIBLE : View.GONE, default = gone}"
+                android:hint="Display name" />
+
+            <ImageView
+                android:id="@+id/avatar_image"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:visibility="@{viewModel.viewState == LoginViewState.REGISTER ? View.VISIBLE : View.GONE, default = gone}"
+                imageUrl="@{viewModel.imageUri}"
+                error="@{@drawable/ic_baseline_picture_in_picture_24}"
+                android:layout_marginTop="20dp" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:enabled="@{!viewModel.loading}"
+                android:onClick="@{() -> viewModel.submit(context)}"
+                android:text='@{viewModel.viewState == LoginViewState.LOGIN ? "Login" : "Register", default = login}' />
+
+            <Button
+                android:id="@+id/one_tap_sign_in_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAllCaps="false"
+                android:enabled="@{!viewModel.loading}"
+                android:text="Access with Google account"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:textColor="@color/teal_700"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</layout>

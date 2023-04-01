@@ -1,0 +1,14 @@
+[2023-03-21 08:55:40] [L] galaxy property is null or empty 
+[2023-03-21 08:55:40] [L] Non-GB Project : Insta_2 
+[2023-03-21 08:55:40] [L] allprojects : project : app 
+[2023-03-21 08:55:40] [L] Non-GB Project : app 
+[2023-03-21 08:55:40] [D] gradle projects loaded 
+[2023-03-21 08:55:40] [I] set common default repository : samsung maven 
+[2023-03-21 08:55:40] [I]     Default Repo : buildscript repository : http://10.252.250.53:8081/lm/content/groups/public/ 
+[2023-03-21 08:55:40] [I]     Default Repo : repository : http://10.252.250.53:8081/lm/content/groups/public/ 
+[2023-03-21 08:55:40] [I] set common default strategy 
+[2023-03-21 08:55:40] [I] set common default repository : samsung maven 
+[2023-03-21 08:55:40] [I]     Default Repo : buildscript repository : http://10.252.250.53:8081/lm/content/groups/public/ 
+[2023-03-21 08:55:40] [I]     Default Repo : repository : http://10.252.250.53:8081/lm/content/groups/public/ 
+[2023-03-21 08:55:40] [I] set common default strategy 
+[2023-03-21 08:55:41] [D] gradle projects evaluated 

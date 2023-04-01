@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/postsListFragment">
+
+    <action
+        android:id="@+id/launch_posts_list"
+        app:popUpTo="@id/postsListFragment"
+        app:popUpToInclusive="true"
+        app:destination="@id/postsListFragment" />
+
+    <action
+        android:id="@+id/launch_profile"
+        app:popUpTo="@id/postsListFragment"
+        app:destination="@id/userProfileFragment" />
+
+    <action
+        android:id="@+id/launch_login"
+        app:popUpTo="@id/nav_graph"
+        app:popUpToInclusive="true"
+        app:destination="@id/loginFragment" />
+
+    <fragment
+        android:id="@+id/postsListFragment"
+        android:name="com.rooze.insta_2.presentation.posts_list.PostsListFragment"
+        android:label="PostsListFragment" >
+        <action
+            android:id="@+id/launch_login_from_posts_list"
+            app:destination="@id/loginFragment"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.rooze.insta_2.presentation.login.LoginFragment"
+        android:label="LoginFragment" >
+        <action
+            android:id="@+id/launch_posts_list_from_login"
+            app:destination="@id/postsListFragment"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="true" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/userProfileFragment"
+        android:name="com.rooze.insta_2.presentation.profile.AccountProfileFragment"
+        android:label="UserProfileFragment" >
+        <argument
+            android:name="accountId"
+            app:argType="string" />
+    </fragment>
+</navigation>
